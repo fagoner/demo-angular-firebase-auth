@@ -1,0 +1,23 @@
+
+<div *ngIf="auth.user | async as user; else showLogin">
+  <h2>Hello {{user.displayName}} - {{user.uid}}</h2>
+  <button
+    (click)="logout()"
+  >Logout</button>
+  
+</div>
+
+<ng-template #showLogin>
+  <h3>Plese login</h3>
+  
+  <label for="username">Username: </label>
+  <input type="text" [(ngModel)]="username">
+  <br>
+  <label for="password">Password: </label>
+  <input type="password" name="password" [(ngModel)]="password">
+
+  <br>
+  <br>
+  <button (click)="login()">Login</button>
+</ng-template>
+<router-outlet></router-outlet>
